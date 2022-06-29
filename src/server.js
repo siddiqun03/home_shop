@@ -2,7 +2,7 @@
 const cookieParser = require("cookie-parser");
 const express = require("express");
 const app = express();
-const router = require();
+const router = require("./route/router");
 const PORT = process.env.PORT || 9000;
 
 // App Set: Ejs...
