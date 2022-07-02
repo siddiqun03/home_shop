@@ -17,7 +17,10 @@
     <%- include('../components/header') %>
 
     <main>
-      <section class="container pt-5 pb-4 position-relative selects">
+      <section class="container pb-4 position-relative selects">
+        <h2 class="text-light text-center mb-3">
+          Add Company, Complex And Rooms...😇
+        </h2>
         <form class="input-group p-1 bg-light rounded-3 mb-2" id="form">
           <span class="input-group-text bg-primary text-light"
             >Name and Image Src</span
@@ -41,7 +44,7 @@
           <button class="btn btn-success" type="submit">Add</button>
         </form>
 
-        <form class="input-group p-1 bg-light rounded-3" id="form2">
+        <form class="input-group p-1 bg-light mb-2 rounded-3" id="form2">
           <select
             name="company_id"
             class="c_y form-select bg-primary text-light"
@@ -58,6 +61,49 @@
             type="text"
             class="form-control w-50"
             placeholder="Name of complex..."
+            required
+          />
+          <button class="btn btn-success" type="submit">Add</button>
+        </form>
+
+        <form class="input-group p-1 bg-light rounded-3" id="form3">
+          <select
+            name="company_id"
+            class="r_m form-select bg-primary text-light"
+            required
+          >
+            <option value="" disabled selected>Choose one...</option>
+            <% all_complex.map(e=>{%>
+            <option value="<%= e.complex_id %>"><%= e.complex_name %></option>
+            <%}) %>
+          </select>
+
+          <input
+            name="room_kv_metr"
+            type="number"
+            class="form-control"
+            placeholder="Room Kv Metr ..."
+            required
+          />
+          <input
+            name="room_1kv_price"
+            type="number"
+            class="form-control"
+            placeholder="Room Per Kv Price ..."
+            required
+          />
+          <input
+            name="room_count"
+            type="number"
+            class="form-control"
+            placeholder="Room Count ..."
+            required
+          />
+          <input
+            name="room_location"
+            type="text"
+            class="form-control"
+            placeholder="Room Location ..."
             required
           />
           <button class="btn btn-success" type="submit">Add</button>

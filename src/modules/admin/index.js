@@ -59,7 +59,13 @@ module.exports = {
         room_1kv_price,
         complex_id,
       } = roomData;
-      console.log(roomData);
+      const post_room = await admin.insert_rooms(
+        room_location,
+        room_count,
+        room_kv_metr,
+        room_1kv_price,
+        complex_id
+      );
       return res.send({ msg: "Done ⛳" });
     }
   },

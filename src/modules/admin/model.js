@@ -16,11 +16,28 @@ const insert_company_query =
   "INSERT INTO company (company_name, company_img) VALUES ($1, $2)";
 const insert_complex_query =
   "INSERT INTO complex (complex_name, company_id) VALUES ($1, $2)";
+const insert_room_query =
+  "INSERT INTO rooms (room_location, room_count, room_kv_metr, room_1kv_price, complex_id) VALUES ($1, $2, $3, $4, $5)";
 
 // * Function for send query: ...
 const insert_company = (name, img) =>
   fetch_data(insert_company_query, name, img);
-const insert_complex = (name, id) => fetch_data(insert_company_query, name, id);
+const insert_complex = (name, id) => fetch_data(insert_complex_query, name, id);
+const insert_rooms = (
+  room_location,
+  room_count,
+  room_kv_metr,
+  room_1kv_price,
+  complex_id
+) =>
+  fetch_data(
+    insert_room_query,
+    room_location,
+    room_count,
+    room_kv_metr,
+    room_1kv_price,
+    complex_id
+  );
 
 // * Module export to use function: ...
 module.exports = {
@@ -29,4 +46,5 @@ module.exports = {
   get_all_rooms,
   insert_company,
   insert_complex,
+  insert_rooms,
 };

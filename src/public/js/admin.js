@@ -1,8 +1,10 @@
 const form = document.querySelector("#form");
 const form2 = document.querySelector("#form2");
+const form3 = document.querySelector("#form3");
 const alert = document.querySelector(".aallll");
 const back_alert = document.querySelector(".back-alert");
 const company_render = document.querySelector(".c_y");
+const complex_render = document.querySelector(".r_m");
 let companyData2 = [];
 
 // * ADMIN PAGE: ...
@@ -73,6 +75,7 @@ form2.addEventListener("submit", (e) => {
 
     setTimeout(() => {
       e.target.complex_name.value = "";
+      e.target.company_id.value = "";
       back_alert.classList.remove("blak-back");
       alert.classList.remove("done-alert");
     }, 1700);
@@ -82,11 +85,47 @@ form2.addEventListener("submit", (e) => {
     const response = await fetch("http://localhost:9000/admin/complex");
     const data = await response.json();
     console.log(data);
-    // company_render.innerHTML = `
-    //   <option value="" selected disabled>choose one...</option>
-    //   ${data.map(
-    //     (e) => ` <option value="${e.company_id}">${e.company_name}</option> `
-    //   )}
-    //   `;
+    complex_render.innerHTML = `
+      <option value="" selected disabled>choose one...</option>
+      ${data.map(
+        (e) => ` <option value="${e.complex_id}">${e.complex_name}</option> `
+      )}
+      `;
+  })();
+});
+form3.addEventListener("submit", (e) => {
+  e.preventDefault();
+  const roomData = {
+    room_kv_metr: e.target.room_kv_metr.value,
+    room_1kv_price: e.target.room_1kv_price.value,
+    room_location: e.target.room_location.value,
+    room_count: e.target.room_count.value,
+    company_id: e.target.company_id.value,
+  };
+  (async () => {
+    const rawResponse = await fetch("/admin", {
+      method: "POST",
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ roomData: roomData }),
+    });
+    const content = await rawResponse.json();
+    const alert = document.querySelector(".aallll");
+    alert.innerHTML = `<p>${content.msg}</p>`;
+
+    alert.classList.add("done-alert");
+    back_alert.classList.add("blak-back");
+
+    setTimeout(() => {
+      e.target.room_kv_metr.value = "";
+      e.target.room_1kv_price.value = "";
+      e.target.room_location.value = "";
+      e.target.room_count.value = "";
+      e.target.company_id.value = "";
+      back_alert.classList.remove("blak-back");
+      alert.classList.remove("done-alert");
+    }, 1700);
   })();
 });
