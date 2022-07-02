@@ -7,6 +7,7 @@ module.exports = {
     const all_companies = await home.all_companies();
     try {
       if ((req.role = "admin")) {
+        res.data = all_companies;
         return res.render("./home", { data, all_companies });
       }
       return res.render("./home");

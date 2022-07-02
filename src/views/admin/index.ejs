@@ -18,17 +18,49 @@
 
     <main>
       <section class="container pt-5 pb-4 position-relative selects">
-        <form>
-          <div class="companiya">
-            <form method="post" class="companiya" id="form-company" action="">
-              <input
-                type="text"
-                name="company_name"
-                placeholder="Company Name"
-              />
-              <button type="submit">Add</button>
-            </form>
-          </div>
+        <form class="input-group p-1 bg-light rounded-3 mb-2" id="form">
+          <span class="input-group-text bg-primary text-light"
+            >Name and Image Src</span
+          >
+          <input
+            name="company_name"
+            type="text"
+            aria-label="First name"
+            class="form-control"
+            placeholder="Name of company..."
+            required
+          />
+          <input
+            name="company_img"
+            type="text"
+            aria-label="Last name"
+            class="form-control"
+            required
+            placeholder="Source of Image..."
+          />
+          <button class="btn btn-success" type="submit">Add</button>
+        </form>
+
+        <form class="input-group p-1 bg-light rounded-3" id="form2">
+          <select
+            name="company_id"
+            class="c_y form-select bg-primary text-light"
+            required
+          >
+            <option value="" disabled selected>Choose one...</option>
+            <% all_companies.map(e=>{%>
+            <option value="<%= e.company_id %>"><%= e.company_name %></option>
+            <%}) %>
+          </select>
+
+          <input
+            name="complex_name"
+            type="text"
+            class="form-control w-50"
+            placeholder="Name of complex..."
+            required
+          />
+          <button class="btn btn-success" type="submit">Add</button>
         </form>
       </section>
 
@@ -76,6 +108,11 @@
       </svg>
     </div>
 
+    <div class="back-alert"></div>
+    <div class="alert aallll alert-info none-alert" role="alert">
+      A simple info alert—check it out!
+    </div>
+
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     <script
@@ -83,6 +120,6 @@
       integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
       crossorigin="anonymous"
     ></script>
-    <script src="/js/index.js"></script>
+    <script src="/js/admin.js"></script>
   </body>
 </html>
