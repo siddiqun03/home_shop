@@ -10,8 +10,7 @@ const home = require("../modules/home");
 const admin = require("../modules/admin");
 
 // Routes: ...
-router.get("/home", home.GET);
-router.get("/admin", check_token, admin.GET);
+router.get("/home", home.GET).get("/admin", admin.GET).post("/home", home.POST);
 
 // Export Router: ...
 module.exports = router;

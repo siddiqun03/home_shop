@@ -11,6 +11,7 @@ app.set("views", __dirname + "/views");
 
 // App Use: ...
 app.use(express());
+app.use(express.json());
 app.use(express.static(__dirname + "/public"));
 app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());

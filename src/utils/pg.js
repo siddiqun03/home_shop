@@ -7,7 +7,6 @@ const pool = new Pool({
 
 const fetchData = async (SQL, ...params) => {
   const client = await pool.connect();
-
   try {
     const { rows } = await client.query(SQL, params.length ? params : null);
     return rows;
@@ -16,4 +15,4 @@ const fetchData = async (SQL, ...params) => {
   }
 };
 
-module.exports = { fetchData };
+module.exports = fetchData;

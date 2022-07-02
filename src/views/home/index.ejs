@@ -17,7 +17,7 @@
     <%- include('../components/header') %>
 
     <main>
-      <section class="container pt-5 pb-4">
+      <section class="container pt-5 pb-4 position-relative selects">
         <form action="" class="d-flex justify-content-between">
           <label class="w-25 me-2">
             <p class="text-light fw-bold">Company</p>
@@ -25,16 +25,24 @@
               name="company"
               class="c_y form-select form-select-sm fw-bold text-primary"
             >
-              <option value="0" selected disabled>choose one...</option>
+              <option value="" selected>choose one...</option>
+              <% all_companies.map(e=> {%>
+              <option
+                value="<%= e.company_id %>|<%= e.company_img%>|<%= e.company_name%>"
+              >
+                <%= e.company_name %>
+              </option>
+              <%}); %>
             </select>
           </label>
           <label class="w-25 me-2">
             <p class="text-light fw-bold">Complex</p>
             <select
+              disabled
               name="complex"
               class="c_x form-select form-select-sm fw-bold text-primary"
             >
-              <option value="0" selected disabled>choose one...</option>
+              <option value="" selected disabled>choose one...</option>
             </select>
           </label>
           <label class="w-25 me-2">
@@ -43,7 +51,7 @@
               name="room"
               class="r_m form-select form-select-sm fw-bold text-primary"
             >
-              <option value="0" selected disabled>choose one...</option>
+              <option value="" selected disabled>choose one...</option>
             </select>
           </label>
           <label class="w-25">
@@ -52,25 +60,63 @@
               name="mortgage"
               class="m_e form-select form-select-sm fw-bold text-primary"
             >
-              <option value="0" selected disabled>choose one...</option>
+              <option value="" selected disabled>choose one...</option>
             </select>
           </label>
         </form>
       </section>
 
       <section class="container">
-        <div class="bg-light rounded-3 p-2">
-          Lorem, ipsum dolor sit amet consectetur adipisicing elit. Saepe
-          dolores earum quos praesentium libero obcaecati quidem, ea temporibus,
-          harum mollitia ratione eos ullam nisi. Vel, saepe? Sequi doloremque
-          soluta dicta!
-        </div>
+        <div class="rounded-3 body_uy"></div>
       </section>
     </main>
+
+    <div>
+      <svg
+        class="waves"
+        xmlns="http://www.w3.org/2000/svg"
+        xmlns:xlink="http://www.w3.org/1999/xlink"
+        viewBox="0 24 150 28"
+        preserveAspectRatio="none"
+        shape-rendering="auto"
+      >
+        <defs>
+          <path
+            id="gentle-wave"
+            d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z"
+          />
+        </defs>
+        <g class="parallax">
+          <use
+            xlink:href="#gentle-wave"
+            x="48"
+            y="0"
+            fill="rgba(255,255,255,0.7"
+          />
+          <use
+            xlink:href="#gentle-wave"
+            x="48"
+            y="3"
+            fill="rgba(255,255,255,0.5)"
+          />
+          <use
+            xlink:href="#gentle-wave"
+            x="48"
+            y="5"
+            fill="rgba(255,255,255,0.3)"
+          />
+          <use xlink:href="#gentle-wave" x="48" y="7" fill="#fff" />
+        </g>
+      </svg>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     <script
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
       integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
       crossorigin="anonymous"
     ></script>
+    <script src="/js/index.js"></script>
   </body>
 </html>
