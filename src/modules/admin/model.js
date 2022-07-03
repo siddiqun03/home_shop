@@ -19,6 +19,18 @@ const insert_complex_query =
 const insert_room_query =
   "INSERT INTO rooms (room_location, room_count, room_kv_metr, room_1kv_price, complex_id) VALUES ($1, $2, $3, $4, $5)";
 
+// * Delete in database:
+const delete_company_query =
+  "DELETE FROM company WHERE company_id = $1 RETURNING *";
+const delete_complex_query =
+  "DELETE FROM complex WHERE complex_id = $1 RETURNING *";
+const delete_rooms_query = "DELETE FROM rooms WHERE room_id = $1 RETURNING *";
+
+// * Function for delete: ...
+const delete_company = (id) => fetch_data(delete_company_query, id);
+const delete_complex = (id) => fetch_data(delete_complex_query, id);
+const delete_rooms = (id) => fetch_data(delete_rooms_query, id);
+
 // * Function for send query: ...
 const insert_company = (name, img) =>
   fetch_data(insert_company_query, name, img);
@@ -47,4 +59,7 @@ module.exports = {
   insert_company,
   insert_complex,
   insert_rooms,
+  delete_company,
+  delete_complex,
+  delete_rooms,
 };

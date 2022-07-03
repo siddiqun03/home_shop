@@ -15,7 +15,8 @@ router
   .get("/admin", admin.GET)
   .post("/home", home.POST)
   .get("/admin/:name", admin.GET2)
-  .post("/admin", admin.POST);
+  .post("/admin", admin.POST)
+  .delete("/admin", admin.DELETE);
 
 // Export Router: ...
 module.exports = router;

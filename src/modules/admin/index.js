@@ -30,6 +30,10 @@ module.exports = {
         const all_complexes = await admin.get_all_complex();
         return res.send(all_complexes);
       }
+      if (name == "rooms") {
+        const all_rooms = await admin.get_all_rooms();
+        return res.send(all_rooms);
+      }
     } catch (error) {
       if (error) throw new Error(error);
     }
@@ -67,6 +71,26 @@ module.exports = {
         complex_id
       );
       return res.send({ msg: "Done ⛳" });
+    }
+  },
+
+  DELETE: async (req, res) => {
+    const { company_id, complex_id, room_id } = req.body;
+    try {
+      if (company_id) {
+        const deleted_item = await admin.delete_company(company_id);
+        return res.send({ msg: "Deleted 🦞" });
+      }
+      if (complex_id) {
+        const deleted_item = await admin.delete_complex(complex_id);
+        return res.send({ msg: "Deleted 🦞" });
+      }
+      if (room_id) {
+        const deleted_item = await admin.delete_rooms(room_id);
+        return res.send({ msg: "Deleted 🦞" });
+      }
+    } catch (error) {
+      if (error) throw new Error(error);
     }
   },
 };

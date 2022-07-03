@@ -86,7 +86,7 @@
   z-index: 33;
   padding: 10px;
   backdrop-filter: blur(30px);
-  box-shadow: inset 0 0 99999px #0000005b;
+  box-shadow: inset 0 0 99999px #00000015;
   border-radius: 20px;
 }
 .companyInfo p {
